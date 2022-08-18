@@ -1,0 +1,101 @@
+select top 50000 *
+from (select PostId, count(id) as NoOfEdits
+     from PostHistory
+     where PostHistoryTypeId = 5
+     group by PostId) as t
+right outer join
+(select
+	j.*,
+	u.Reputation
+from
+	(
+		select
+			o.id as PostId,
+			ViewCount,
+			Body,
+			Tags,
+			OwnerUserId,
+			AnswerCount,
+			CommentCount,
+            CreationDate
+		from
+			(
+				select
+					p1.*,
+					p2.creationdate as firstanswer
+				from
+					(
+						select
+							*
+						from
+							posts
+						where
+							posttypeid = 1
+							and CAST(CreationDate as date) 
+                            BETWEEN '20200101'
+							and '20220806'
+							and PostTypeId = 1
+							and Body is not null
+							and AnswerCount is not null
+							and ClosedDate is null
+							and CommunityOwnedDate is null
+					) as p1
+					full outer join (
+						select
+							ParentId,
+							creationdate
+						from
+							posts
+						where
+							posttypeid = 2
+					) as p2 on p1.id = p2.ParentId
+				where
+					(p1.LastEditDate < p2.creationdate)
+					or (p1.lastEditDate is null)
+			) as o
+			full outer join (
+				select
+					p.id,
+					min(firstanswer) as firstanswer
+				from
+					(
+						select
+							p1.*,
+							p2.creationdate as firstanswer
+						from
+							(
+								select
+									*
+								from
+									posts
+								where
+									posttypeid = 1
+									and CAST(CreationDate as date) 
+                                    BETWEEN '20210101'
+									and '20220806'
+									and PostTypeId = 1
+									and Body is not null
+									and AnswerCount is not null
+									and ClosedDate is null
+									and CommunityOwnedDate is null
+							) as p1
+							full outer join (
+								select
+									ParentId,
+									creationdate
+								from
+									posts
+								where
+									posttypeid = 2
+							) as p2 on p1.id = p2.ParentId
+						where
+							(p1.LastEditDate < p2.creationdate)
+							or (p1.lastEditDate is null)
+					) as p
+				group by
+					p.id
+			) as s on o.id = s.id
+			and o.firstanswer = s.firstanswer
+	) as j
+    join users as u on u.id = j.OwnerUserId) as h on h.postid=t.postid
+    order by CreationDate desc
