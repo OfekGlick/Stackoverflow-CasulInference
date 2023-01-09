@@ -1,7 +1,7 @@
 # Stackoverflow-CasulInference
 
 ## Description
-In this causal research we sought to answer the question "<i>Does adding a code sample to a question in Stackoverflow imporive its chances of 
+In this causal research we sought to answer the question "<i>Does adding a code sample to a question in Stackoverflow improve its chances of 
 receiving an answer? </i>" <br>
 The stages of this project where:
 
