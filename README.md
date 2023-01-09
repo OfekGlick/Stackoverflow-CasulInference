@@ -11,9 +11,9 @@ The stages of this project were the following:
 <li> Identification of causal setting - determining whether certain conditions are met which allow us to answer causal questions. </li>
 <li> Estimation - estimating the causal effect of the treatment variable "<i>code presence in question</i>" on the target variable "<i>question has an answer</i>" </li>
 </ol>
+For a full explainantion regarding the project, please refer to the `Project Report.pdf` file.
 
 ## What does this repo contain?
-For a full explainantion regarding the project, please refer to the `Project Report.pdf` file.
 <br>
 This repository contains:
 <ul>
