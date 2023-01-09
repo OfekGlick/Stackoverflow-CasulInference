@@ -10,9 +10,9 @@ The stages of this project where:
 <li> Data preprocessing - simple cleaning (null removal, standardization, etc.), feature engineering</li>
 <li> Identification of causal setting - determining whether certain conditions are met which allow us to answer causal questions. </li>
 <li> Estimation - estimating the causal effect of the treatment variable "<i>code presence in question</i>" on the target variable "<i>question has an answer</i>" </li>
-
 </ol>
 
+## What does this repo contain?
 For a full explainantion regarding the project, please refer to the `Project Report.pdf` file.
 <br>
 This repository contains:
@@ -33,5 +33,10 @@ Question data is saved in the file `All4.csv` and Tag data is saved `TagsCount.c
 ### Data preprocessing and analysis
 All files regarding the preprocessing and analysis of the data in the file `Stackoverflow.ipynb` (you can view `Stackoverflow.pdf` for a pdf view of the notebook).<br>
 The notebook contains initial preprocessing, feature analysis, identification measures (as required in causal researches) and estimation metrics. Again, for a more detailed explanation please refer to the `Project Report.pdf`
+
+### Full report
+The full report, including conclusions and suggestions for future work is all present in the file `Project Report.pdf`
+
+
 
 
