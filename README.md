@@ -3,7 +3,7 @@
 ## Description
 In this causal research we sought to answer the question "<i>Does adding a code sample to a question in Stackoverflow improve its chances of 
 receiving an answer? </i>" <br>
-The stages of this project where:
+The stages of this project were the following:
 
 <ol>
 <li> Data extraction - extracing all necessary features needed to conduct the research </li>
